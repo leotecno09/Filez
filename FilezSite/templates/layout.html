@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<div class="background-nanuced">
+<head>
+    <link rel="stylesheet" href="/static/scripts/CSS/global/global.css" media="screen">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>{{title}}</title>
+    <nav>
+        <ul>
+            <!--li class="logo"><img src="/static/images/mainpage/filezLogoBeta.png"></li!-->
+            {% if current_user.is_authenticated %}
+            <li class="nav-register"><a href="/UserDashboard">Dashboard</a></li>
+            <li class="nav-login"><a href="/logout">Logout</a></li>
+
+            {% else %}
+            <li class="nav-register"><a href="/register">Registrati</a></li>
+            <li class="nav-login"><a href="/login">Accedi</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <center>{{ message }}</center>
+  </div>
+  {% else %}
+<div class="alertSuccess">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <center>{{ message }}</center>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+</div>
+
+
+<div id="upload-popup">
+  <div id="upload-popup-content">
+    <span class="closebtnupload" id="close-btn">&times;</span>
+    <br>
+    <center><h2>Carica un file</h2></center>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" id="file" name="file" class="file-form" />
+      <br>
+      <br>
+      <center><button type="submit" class="button-blue">Carica</button></center>
+    </form>
+  </div>
+</div>
+
+<!--div id="upload-popup">
+  <div id="upload-popup-content">
+    <span class="closebtnupload" id="close-btn">&times;</span>
+    <br>
+    <center><h2>File caricato con successo!</h2></center>
+  </div>
+</div-->
+
+<script>
+  const uploadBtn = document.getElementById('upload-btn');
+  const uploadPopup = document.getElementById('upload-popup');
+  const closeBtn = document.getElementById('close-btn');
+  
+  uploadBtn.addEventListener('click', function() {
+    uploadPopup.classList.add('open');
+  });
+  
+  closeBtn.addEventListener('click', function() {
+    uploadPopup.classList.remove('open');
+  });
+  
+</script>
+
+<footer>
+  <br>
+  <p>FilEZ BETA 2023. All rights reserved.</p>
+  <p>Creato da LeoTecno</p>
+  <a href="/info">MAGGIORI INFORMAZIONI</a>
+</footer>
+

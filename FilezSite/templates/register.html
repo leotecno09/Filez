@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+  <title>Filez | Register</title>
+  <body>
+    <div>
+    <!--link rel="stylesheet" href="/static/scripts/CSS/global/global.css" media="screen"!--> 
+        <form method="POST">
+          <div class="container">
+            <div class="base-text">Registrati</div>
+            <center><div class="fcloud">FilEZ Cloud</div></center>
+            <br>
+            <input type="email" id="email" name="email" required="" class="input-fields" placeholder="Inserisci la tua email" />
+            <br>
+            <input type="password" id="password" name="password" required="" class="input-fields" placeholder="Crea una password (almeno 7 caratteri)" />
+            <!--small class="cpdetector">Il blocco maiuscole è attivo!</small!-->
+            <br>
+            <input type="password" id="passwordConfirm" name="passwordConfirm" required="" class="input-fields" placeholder="Conferma la password" />
+            <br>
+            <center><button class="base-button" type="submit">Procedi</button></center>
+            <br>
+            <!--div class="minitext">Non hai un account?</div!-->
+            <!--a href="/register" class="minitext">Creane uno!</a!-->      
+          </div>
+        </form>
+    </div>
+  </body>
+</html>
+{% endblock %}

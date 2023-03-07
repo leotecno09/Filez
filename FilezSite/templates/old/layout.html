@@ -1,0 +1,82 @@
+<!doctype html>
+<!--script type="text/javascript" src="/static/scripts/JS/layout/index.js"></script!-->
+<!--link rel="stylesheet" href="/static/scripts/CSS/registerpage/nicepage.css" media="screen"!-->
+<link rel="stylesheet" href="/static/scripts/CSS/registerpage/register.css" media="screen">
+<link rel="stylesheet" href="/static/scripts/CSS/loginpage/login.css" media="screen">
+<link rel="stylesheet" href="/static/scripts/CSS/mainpage/nicepage.css" media="screen">
+<link rel="stylesheet" href="/static/scripts/CSS/mainpage/Home.css" media="screen">
+<title>FilEZ (ALPHA - NOT RELEASED 2023 MADE BY LEOTECNO)</title>
+
+
+</head>
+<body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-gradient u-xl-mode" style="background-image: linear-gradient(white, #adcce9);"><header class="u-clearfix u-header" id="sec-174c" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
+      <a href="/"><img class="u-image u-image-default u-image-1" src="/static/images/mainpage/filezLogoBeta.png" alt="" data-image-width="584" data-image-height="398"></a>
+{% if current_user.is_authenticated %}
+<h5 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-1"><a href="/logout">Logout</a></h5>
+<h5 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-2"><a href="/UserDashboard">Dashboard</a></h5>
+{% else %}
+<h5 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-1"><a href="/login">Accedi</a></h5>
+{% endif %}
+</header>
+
+<style>
+      .alert {
+      padding: 10px;
+      background-color: #f44336;
+      color: white;
+    }
+    
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .closebtn:hover {
+      color: black;
+    }
+    .alertSuccess {
+      padding: 10px;
+      background-color: #0fda3b;
+      color: white;
+      position: relative;
+    }
+    
+    .closebtnSuccess {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .closebtnSuccess:hover {
+      color: black;
+    }
+</style>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <center>{{ message }}</center>
+  </div>
+  {% else %}
+<div class="alertSuccess">
+    <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span>
+    <center>{{ message }}</center>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endif %}
+{% endwith %}
+{% block body %}{% endblock %}

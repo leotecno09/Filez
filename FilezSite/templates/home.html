@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+    <body>
+        <center>
+            <br>
+            <div class="title">Benvenuto in FilEZ!</div>
+            <p class="under-text-mini">Il cloud, semplice!</p>
+            <hr>
+            <br>
+            <img src="/static/images/mainpage/upload_icon.png">
+            <button class="button-blue" id="upload-btn">Carica un file!</button>
+            <br>
+            <hr>
+            <br>
+            <div class="subtitle">Feautres di FilEZ</div>
+            <br>
+        </center>
+        <div class="feature-box">
+            <div class="feature-1">
+                <img class="feature-img" src="/static/images/mainpage/features/cloud.png">
+                <p class="bold">Spazio di archiviazione di 15GB</p>
+                <p>Potrai caricare nel tuo archvio virtuale<br>quanti file vorrai, finchè non raggiungerai i 15GB.</p>
+            </div>
+            <br>
+            <div class="feature-2">
+                <img class="feature-img" src="/static/images/mainpage/features/share.png">
+                <p class="bold">Condividi i tuoi file facilmente</p>
+                <p>Potrai condividere i tuoi file con chi vuoi,<br>solo con un click</p>
+            </div>
+            <br>
+            <div class="feature-3">
+                <img class="feature-img" src="/static/images/mainpage/features/security.png">
+                <p class="bold">I tuoi file sono al sicuro</p>
+                <p>Il cloud di FilEZ è 'ben protetto'<br>i tuoi file saranno al 'sicuro'</p>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <center>
+            <div class="subtitle bold">Iscriviti GRATIS!</div>
+            <br> 
+            <a href="/register" class="button-blue">Crea un account</a>
+        </center>        
+    </body>
+</html>
+{% endblock %}

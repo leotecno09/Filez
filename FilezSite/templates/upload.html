@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+    <body>
+        <br>
+        <div class="title">Carica un file</div>
+        <br>
+        <center>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="upload-box">
+            <input type="file" id="file" name="file" class="file-form" />
+            <br>
+            <br>
+            <input type="checkbox" name="shared" value="True" checked>Condiviso</input>
+            <br>
+            <br>
+            <button class="base-button" type="submit">Carica</button>
+          </div>
+        </form>
+        </center>
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+    <body>
+        <center>
+            <p class="title">Visualizzatore file</p>
+            <p class="subtitle">{{filename}}</p>
+            {% if shared == 'True' %}
+            <p class="under-text-mini">(Condiviso)</p>
+            {% else %}
+            {% endif %}
+            <div class="viewfile-box">
+                <img src="/static/users/{{user}}/uploaded/{{filename}}">
+                <br>
+                <br>
+                {% if shared == 'True' %}
+                <a href="./{{filecode}}/download" class="button-blue">SCARICA</a>
+                {% else %}
+                <a href="./{{filecode}}/share" class="button-blue">CONDIVIDI</a>
+                <br>
+                <a href="./{{filecode}}/download" class="button-blue">SCARICA</a>
+                {% endif %}
+            </div>
+        </center>
+    </body>
+</html>
+{% endblock %}
