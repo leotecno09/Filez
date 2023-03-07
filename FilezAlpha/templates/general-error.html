@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <center>
+            <h1>Si è verificato un errore.</h1>
+            {% if errorcode == '404' %}
+                <h2>"/{{resourcenotfound}}" non è stato trovato.</h2>
+            {% elif errorcode == '403' %}
+                <h2>Non hai il permesso per accedere a questa pagina.</h2>
+            {% elif errorcode == 'FILE_NOT_FOUND_ERROR' %}
+                <h2>Il file non è stato trovato!</h2>
+            {% elif errorcode == "FILE_NOT_SHARED_ERROR" %}
+                <h2>Il file non è condiviso!</h2>
+            {% elif errorcode == "SECURITY_KEY_INCORRECT" %}
+                <h2>Chiave di sicurezza non valida!</h2>
+            {% endif %}
+            <h3>Codice di errore: {{errorcode}}</h3>
+            <a href="/">Torna alla pagina principale</a>
+        </center>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Ecco il tuo file (Test)</h1>
+<img src="/static/users/{{userupload}}/uploaded/{{name}}">
+{% if a == "True" %}
+<a href="./{{filecode}}/download">
+    <button class="u-btn u-btn-round u-btn-submit u-button-style u-radius-6">Scarica</button>
+</a>
+{% else %}
+<a href="./{{filecode}}/download">
+    <button class="u-btn u-btn-round u-btn-submit u-button-style u-radius-6">Scarica</button>
+</a>
+{% endif %}
+{% endblock %}

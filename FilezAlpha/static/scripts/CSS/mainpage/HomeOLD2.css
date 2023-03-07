@@ -469,13 +469,3 @@
 .u-container-layout.hover .u-section-1 .u-icon-3 {
   transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
 }
-.dropdown-content{
-	position: absolute;
-	background-color: #b3b3b3;
-	top: -5 px;
-}
-
-.dropdown-content a{
-	display: block;
-	padding: 15px;
-}

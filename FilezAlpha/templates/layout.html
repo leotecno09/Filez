@@ -5,55 +5,23 @@
 <link rel="stylesheet" href="/static/scripts/CSS/loginpage/login.css" media="screen">
 <link rel="stylesheet" href="/static/scripts/CSS/mainpage/nicepage.css" media="screen">
 <link rel="stylesheet" href="/static/scripts/CSS/mainpage/Home.css" media="screen">
-<script class="u-script" type="text/javascript" src="/static/scripts/JS/mainpage/jquery.js" defer=""></script>
-<script class="u-script" type="text/javascript" src="/static/scripts/JS/mainpage/nicepage.js" defer=""></script>
-<!--script class="u-script" type="text/javascript" src="/static/scripts/JS/register/jquery.js" defer=""></script>
-<script class="u-script" type="text/javascript" src="/static/scripts/JS/register/nicepage.js" defer=""></script!-->
+<title>FilEZ (ALPHA - NOT RELEASED 2023 MADE BY LEOTECNO)</title>
+
+
 </head>
 <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-gradient u-xl-mode" style="background-image: linear-gradient(white, #adcce9);"><header class="u-clearfix u-header" id="sec-174c" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
-  <img class="u-image u-image-default u-image-1" src="/static/images/mainpage/filezLogoBeta.png" alt="" data-image-width="584" data-image-height="398">
-  <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-    <div class="menu-collapse">
-      <a class="u-button-style u-nav-link" href="#">
-        <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-9e67"></use></svg>
-        <svg class="u-svg-content" version="1.1" id="svg-9e67" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
-</g></svg>
-      </a>
-    </div>
-    <div class="u-custom-menu u-nav-container">
-{% if user.is_authenticated %}
-      <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link">Il mio account</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="/myFiles">I miei file</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="/accountSettings">Impostazioni</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-white" href="/logout">Esci</a>
-</li></ul>
-</div>
+      <a href="/"><img class="u-image u-image-default u-image-1" src="/static/images/mainpage/filezLogoBeta.png" alt="" data-image-width="584" data-image-height="398"></a>
+{% if current_user.is_authenticated %}
+<h5 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-1"><a href="/logout">Logout</a></h5>
+<h5 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-2"><a href="/UserDashboard">Dashboard</a></h5>
 {% else %}
-<div class="u-custom-menu u-nav-container"></div>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login">Accedi</a>
-</div>
+<h5 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-1"><a href="/login">Accedi</a></h5>
 {% endif %}
-</li></ul>
-    </div>
-    <div class="u-custom-menu u-nav-container-collapse">
-      <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-        <div class="u-inner-container-layout u-sidenav-overflow">
-          <div class="u-menu-close"></div>
-          <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3"><li class="u-nav-item"><a class="u-button-style u-nav-link">Il mio account</a><div class="u-nav-popup"><ul class="u-h-spacing-20 u-nav u-unstyled u-v-spacing-10"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/myFiles">I miei file</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/accountSettings">Impostazioni</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/logout">Esci</a>
-</li></ul>
-</div>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/login">Accedi</a>
-</li></ul>
-        </div>
-      </div>
-      <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-    </div>
-  </nav>
-</div></header>
-  <style>
-    .alert {
-      padding: 20px;
+</header>
+
+<style>
+      .alert {
+      padding: 10px;
       background-color: #f44336;
       color: white;
     }
@@ -73,9 +41,10 @@
       color: black;
     }
     .alertSuccess {
-      padding: 20px;
+      padding: 10px;
       background-color: #0fda3b;
       color: white;
+      position: relative;
     }
     
     .closebtnSuccess {
@@ -92,20 +61,19 @@
     .closebtnSuccess:hover {
       color: black;
     }
-    </style>
-<title>FilEZ (ALPHA - NOT RELEASED 2023 MADE BY LEOTECNO)</title>
+</style>
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
   {% for category, message in messages %}
   {% if category == 'error' %}
   <div class="alert">
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    {{ message }}
+    <center>{{ message }}</center>
   </div>
   {% else %}
 <div class="alertSuccess">
     <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span>
-    {{ message }}
+    <center>{{ message }}</center>
   </div>
   {% endif %}
   {% endfor %}
