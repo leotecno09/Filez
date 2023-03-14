@@ -2,4 +2,4 @@
 Archive Site (Beta)
 
 
-"Filez (Beta) is the latest upload"
+"Filez (Beta)" is the latest upload
