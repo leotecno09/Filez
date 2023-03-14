@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ricerca file</title>
+  </head>
+  <body>
+    <form action="{{ url_for('search') }}" method="GET">
+      <input type="text" name="query" placeholder="Cerca">
+      <button type="submit">Cerca</button>
+    </form>
+    {% if results %}
+    <ul>
+      {% for filename in results %}
+      <li>{{ filename }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>

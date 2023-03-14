@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+<head>
+	<title>Upload Form</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+		form {
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			max-width: 500px;
+		}
+		input[type=file] {
+			display: block;
+			margin: 20px 0;
+		}
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			margin-top: 20px;
+		}
+		input[type=submit]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+    <section class="u-clearfix u-gradient u-section-1" id="sec-e485">
+    <div class="u-clearfix u-sheet u-sheet-1">
+	<form action="" method="post" enctype="multipart/form-data">
+		<h2>Carica un file</h2>
+		<input type="file" name="file" id="file" />
+		<button class="u-btn u-btn-round u-btn-submit u-button-style u-radius-6" type="submit">Carica</button>
+	</form>
+</body>
+</section>
+<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-cdbd"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
+    <p class="u-text u-text-default u-text-1">Copyright © Filez (ALPHA) 2023<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Tutti i diritti riservati<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Creato da LeoTecno
+    </p>
+    <h6 class="u-text u-text-default u-text-2">
+      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="./infos/privacy">LEGGI MAGGIORI INFORMAZIONI SULLA PRIVACY</a>
+    </h6>
+  </div></footer>
+</section>
+</body>
+</html>
+{% endblock %}

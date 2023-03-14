@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+    <body>
+        <center>
+            <p class="title">Visualizzatore file</p>
+            <p class="subtitle">"{{filename}}"</p>
+            {% if shared == 'True' %}
+            <p class="under-text-mini bold">(Condiviso)</p>
+            {% else %}
+            {% endif %}
+            <div class="viewfile-box">
+                {% if fileext == ".txt" %}
+                <iframe width="900" height="auto" src="/static/users/{{user}}/uploaded/{{filename}}"></iframe>
+                {% elif fileext == ".mp4" or fileext == ".mkv" or fileext == ".mov" or fileext == ".avi" %}
+                <video width="900" height="auto" controls>
+                    <source src="/static/users/{{user}}/uploaded/{{filename}}" type="video/mp4">
+                </video>
+                {% elif fileext == ".png" or fileext == ".jpeg" or fileext == ".jpg" %}
+                <img class="viewfile-img" src="/static/users/{{user}}/uploaded/{{filename}}">
+                {% elif fileext == ".mp3" or fileext == ".wav" or fileext == ".ogg" %}
+                <audio controls>
+                    <source src="/static/users/{{user}}/uploaded/{{filename}}" type="audio/ogg">
+                </audio>
+                {% else %}
+                <p class="subtitle bold">Il tuo file non è supportato dal visualizzatore, scaricalo per visualizzarlo</p>
+                {% endif %}
+                <br>
+                <br>
+                <div class="buttons">
+                    {% if shared == 'True' and sharemode == 'A' %}
+                    <a href="./a/download" class="button-blue">SCARICA</a>
+                    {% elif shared == 'True' and sharemode == 'U'%}
+                    <a href="./u/download" class="button-blue">SCARICA</a>
+                    {% elif sharedbyme == 'True' %}
+                    <a href="./removeshare" class="button-blue">SMETTI DI CONDIVIDERE</a>
+                    <br>
+                    <a href="./download" class="button-blue">SCARICA</a>
+                    <br>
+                    <a href="./delete" class="button-blue">CANCELLA</a>
+                    {% else %}
+                    <button class="button-blue" onclick="opensharepopup()">CONDIVIDI</button>
+                    <br>
+                    <a href="./download" class="button-blue">SCARICA</a>
+                    <br>
+                    <button class="button-blue" onclick="opendelpopup()">CANCELLA</button>
+                    {% endif %}
+                </div>
+            </div>
+        </center>
+    </body>
+</html>
+{% endblock %}

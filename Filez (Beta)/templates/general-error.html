@@ -1,0 +1,36 @@
+<style>
+    @font-face{
+        font-family: inter-light;
+        src: url(/static/fonts/default/Inter-Light.ttf);
+    }
+    .text{
+        font-family: inter-light;
+    }
+    .text-container{
+        text-align: center;
+    }
+</style>
+
+<html>
+    <title>Si è verificato un errore</title>
+    <body>
+        <div class="text-container">
+            <h1 class="text">Si è verificato un errore.</h1>
+            {% if errorcode == '404' %}
+                <h2 class="text">"/{{resourcenotfound}}" non è stato trovato.</h2>
+            {% elif errorcode == '403' %}
+                <h2 class="text">Non hai il permesso per accedere a questa pagina.</h2>
+            {% elif errorcode == 'FILE_NOT_FOUND_ERROR' %}
+                <h2 class="text">Il file non è stato trovato!</h2>
+            {% elif errorcode == "FILE_NOT_SHARED_ERROR" %}
+                <h2 class="text">Il file non è condiviso!</h2>
+            {% elif errorcode == "SECURITY_KEY_INCORRECT" %}
+                <h2 class="text">Chiave di sicurezza non valida!</h2>
+            {% elif errorcode == "INSUFFICIENT_PERMISSIONS" %}
+                <h2 class="text">Non puoi accedere a questo file!</h2>
+            {% endif %}
+            <h3 class="text">Codice di errore: {{errorcode}}</h3>
+            <a href="/" class="text">Torna alla pagina principale</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+<html>
+    <center>
+        <br>
+        <div class="subtitle">I miei file</div>
+        <div class="under-text-mini">Ciao, {{name}}</div>
+    </center>
+        <br>
+        <div class="dashboard-tools">
+          <form class="search-box" action="/UserDashboard/search" method="GET">
+            <input type="text" name="query" placeholder="Cerca tra i file">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <button class="button-blue" id="upload-btn">Carica un file</button>
+        </div>
+        <!--button class="button-blue" id="share-btn">CIAO</button-->
+        {% if shareincoming == "True" %}
+        <div id="view-link-popup">
+          <div id="view-link-popup-content">
+            <span class="closebtnupload" onclick="closeviewlinkpop()">&times;</span>
+            <br>
+            <center>
+              <h2>Ecco il link per "{{filename}}"</h2>
+              <p>{{link}}</p>
+            </center>
+          </div>
+        </div>  
+        {% endif %}      
+    <main>
+        <ul class="files">
+          {% if files %}
+            {% for file in files %}
+            <li>
+              <a class="file" href="/file/{{file.filecode}}/view">{{file.filename}}</a>
+              <td>Caricato il {{file.dateupload}}</td>
+            </li>
+            {% endfor %}
+          {% else %}
+          <center><div class="subtitle">Nessun file trovato!</div></center>
+          {% endif %}
+        </ul>
+      </main>
+</html>
+
+<!--script type="text/javascript">
+  function nextopenlink() {
+      console.log("Inizio")
+      setTimeout(function() {
+        console.log("Passati 5 secondi");
+      }, 5000);
+      viewLinkPop.classList.add('open')
+  }
+  
+  function closeviewlinkpop() {
+      viewLinkPop.classList.remove('open')
+  }
+  </script-->
+{% endblock %}

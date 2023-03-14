@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<div class="background-nanuced">
+<head>
+    <link rel="stylesheet" href="/static/scripts/CSS/global/global.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/icons/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/icons/favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/icons/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/static/images/icons/favicon_io/site.webmanifest">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>{{title}}</title>
+    <nav>
+        <ul>
+            <!--li class="logo"><img src="/static/images/mainpage/filezLogoBeta.png"></li!-->
+            {% if current_user.is_authenticated %}
+            <li class="nav-home"><a href="/">Home</a></li>
+            <li class="nav-register"><a href="/UserDashboard">Dashboard</a></li>
+            <li class="nav-login"><a href="/account/logout">Logout</a></li>
+
+            {% else %}
+            <li class="nav-home"><a href="/">Home</a></li>
+            <li class="nav-register"><a href="/account/register">Registrati</a></li>
+            <li class="nav-login"><a href="/account/login">Accedi</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <span><center>{{message}}</center></span>
+  </div>
+  {% else %}
+<div class="alertSuccess">
+    <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span>
+    <span><center>{{message}}</center></span>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+</div>
+
+
+<div id="upload-popup">
+  <div id="upload-popup-content">
+    <span class="closebtnupload" id="close-btn">&times;</span>
+    <br>
+    <center><h2>Carica un file</h2></center>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" id="file" name="file" class="file-form" />
+      <br>
+      <br>
+      <center><button type="submit" class="button-blue">Carica</button></center>
+    </form>
+  </div>
+</div>
+
+<div id="delete-popup">
+  <div id="delete-popup-content">
+    <span class="closebtnupload" onclick="closedelpopup()">&times;</span>
+    <br>
+    <center><h2>Sei sicuro di voler cancellare "{{filename}}"?</h2>
+    <div class="under-text-mini bold">(Non potrai più recuperarlo!)</div>
+    <br>
+    <a class="button-blue" href="./delete">SI</a>
+    <br>
+    <a class="button-blue" href="javascript:void(0)" onclick="closedelpopup()">NO</a></center>
+  </div>
+</div>
+
+<div id="share-popup">
+  <div id="share-popup-content">
+    <span class="closebtnupload" onclick="closesharepopup()">&times;</span>
+    <br>
+    <center>
+      <h2>Condivisione di "{{filename}}"</h2>
+      <form action="./share" method="post">
+        <input type="radio" name="share" value="A" checked>Chiunque abbia il link
+        <input type="radio" name="share" value="U">Solo utenti registrati
+        <input class="button-blue" type="submit" value="CONDIVIDI" onclick="nextopenlink()">
+      </form>
+      <br>
+      <br>
+    </center>   
+  </div>
+</div>
+
+<script type="text/javascript">
+  const uploadBtn = document.getElementById('upload-btn');
+  const uploadPopup = document.getElementById('upload-popup');
+  const closeBtn = document.getElementById('close-btn');
+  const deleteBtn = document.getElementById('delete-btn');
+  const deletePopup = document.getElementById('delete-popup');
+  const shareBtn = document.getElementById('share-btn');
+  const sharePopup = document.getElementById('share-popup');
+  const viewLinkPop = document.getElementById('view-link-popup');
+  
+  uploadBtn.addEventListener('click', function() {
+    uploadPopup.classList.add('open');
+  });
+  
+  closeBtn.addEventListener('click', function() {
+    uploadPopup.classList.remove('open');
+  });
+
+  function opendelpopup() {
+    deletePopup.classList.add('open');
+  };
+
+  function closedelpopup() {
+    deletePopup.classList.remove('open')
+  }
+
+  function opensharepopup() {
+    sharePopup.classList.add('open')
+  }
+
+  function closesharepopup() {
+    sharePopup.classList.remove('open')    
+  }
+
+</script>
+
+<footer>
+  <br>
+  <p>FilEZ BETA 2023. All rights reserved.</p>
+  <p>Creato da LeoTecno</p>
+  <a href="/info">MAGGIORI INFORMAZIONI</a>
+</footer>
+
